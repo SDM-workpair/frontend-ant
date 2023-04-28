@@ -1,6 +1,15 @@
-FROM nginx
+FROM node:16-alpine
 
-RUN rm /etc/nginx/conf.d/default.conf
+ 
+# make the 'app' folder the current working directory
+WORKDIR /frontend
 
-ADD deploy/nginx.conf /etc/nginx/conf.d/default.conf
-COPY dist/ /usr/share/nginx/html/
+ 
+# copy both 'package.json' and 'package-lock.json' (if available)
+COPY package*.json ./
+
+# install project dependencies
+RUN npm install --force
+# Run npm install @vuepic/vue-datepicker
+# copy project files and folders to the current working directory (i.e. 'app' folder)
+COPY . .

@@ -61,7 +61,7 @@ const vueConfig = {
 
   chainWebpack: config => {
     config.resolve.alias.set('@$', resolve('src'))
-
+    
     // fixed svg-loader by https://github.com/damianstasik/vue-svg-loader/issues/185#issuecomment-1126721069
 		const svgRule = config.module.rule('svg')
 		// Remove regular svg config from root rules list
